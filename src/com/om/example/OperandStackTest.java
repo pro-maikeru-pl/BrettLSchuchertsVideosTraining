@@ -14,6 +14,17 @@ public class OperandStackTest {
 		values = new OperandStack();
 	}
 	@Test
+	public void displaysItsContentAsEmptyArrayLiteralIfEmpty()
+	{
+		assertEquals("[]", values.toString());
+	}
+	@Test
+	public void displaysItsContentAsArrayLiteralWithElementsIfNotEmpty()
+	{
+		values.replaceTop(BigDecimal.ONE);
+		assertEquals("[1]", values.toString());
+	}
+	@Test
 	public void IsNeverEmpty() {
 		assertEquals(BigDecimal.ZERO, values.peek());
 	}
