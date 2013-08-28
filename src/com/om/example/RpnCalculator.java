@@ -31,6 +31,8 @@ public class RpnCalculator {
 			return new Add();
 		} else if ("-".equals(operatorName)) {
 			return new Subtract();
+//		} else if ("*".equals(operatorName)) {
+//			return new Multiply();
 		} else if ("!".equals(operatorName)) {
 			return new Factorial();
 		}

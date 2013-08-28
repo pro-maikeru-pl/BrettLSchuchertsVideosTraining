@@ -2,9 +2,9 @@ package com.om.example;
 
 import java.math.BigDecimal;
 
-public class Subtract extends BinaryMathOperator {
+public class Multiply extends BinaryMathOperator {
 	@Override
 	protected BigDecimal executeImplementation(BigDecimal lhs, BigDecimal rhs) {
-		return lhs.subtract(rhs);
+		return lhs.multiply(rhs);
 	}
 }
