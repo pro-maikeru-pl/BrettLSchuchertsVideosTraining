@@ -21,43 +21,20 @@ public class RpnCalculator {
 		values.pop();
 	}
 
-	private void add() {
-
-		BigDecimal rhs = values.peek();
-		values.pop();
-		BigDecimal lhs = values.peek();
-		BigDecimal result = lhs.add(rhs);
-		values.replaceTop(result);
-	}
-
-	private void subtract() {
-		BigDecimal rhs = values.peek();
-		values.pop();
-		BigDecimal lhs = values.peek();
-		BigDecimal result = lhs.subtract(rhs);
-		values.replaceTop(result);
-	}
-
-	private void factorial() {
-		BigDecimal result = BigDecimal.ONE;
-		BigDecimal operand = values.peek();
-		while (operand.compareTo(BigDecimal.ONE) > 0) {
-			result = result.multiply(operand);
-			operand = operand.subtract(BigDecimal.ONE);
-		}
-		values.replaceTop(result);
-	}
-
 	public void execute(String operatorName) {
+		MathOperator op = findOperatorNamed(operatorName);
+		op.execute(values);
+	}
+
+	private MathOperator findOperatorNamed(String operatorName) {
 		if ("+".equals(operatorName)) {
-			add();
+			return new Add();
 		} else if ("-".equals(operatorName)) {
-			subtract();
+			return new Subtract();
 		} else if ("!".equals(operatorName)) {
-			factorial();
-		} else {
-			throw new NoSuchOperator();
+			return new Factorial();
 		}
+		throw new NoSuchOperator();
 	}
 	
 
