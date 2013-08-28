@@ -21,7 +21,7 @@ public class RpnCalculator {
 		values.pop();
 	}
 
-	public void add() {
+	private void add() {
 
 		BigDecimal rhs = values.peek();
 		values.pop();
@@ -30,7 +30,7 @@ public class RpnCalculator {
 		values.replaceTop(result);
 	}
 
-	public void subtract() {
+	private void subtract() {
 		BigDecimal rhs = values.peek();
 		values.pop();
 		BigDecimal lhs = values.peek();
@@ -38,7 +38,7 @@ public class RpnCalculator {
 		values.replaceTop(result);
 	}
 
-	public void factorial() {
+	private void factorial() {
 		BigDecimal result = BigDecimal.ONE;
 		BigDecimal operand = values.peek();
 		while (operand.compareTo(BigDecimal.ONE) > 0) {
@@ -46,6 +46,18 @@ public class RpnCalculator {
 			operand = operand.subtract(BigDecimal.ONE);
 		}
 		values.replaceTop(result);
+	}
+
+	public void execute(String operatorName) {
+		if ("+".equals(operatorName)) {
+			add();
+		} else if ("-".equals(operatorName)) {
+			subtract();
+		} else if ("!".equals(operatorName)) {
+			factorial();
+		} else {
+			throw new NoSuchOperator();
+		}
 	}
 	
 
