@@ -12,5 +12,4 @@ public class Subtract implements MathOperator {
 		BigDecimal result = lhs.subtract(rhs);
 		values.replaceTop(result);
 	}
-
 }
