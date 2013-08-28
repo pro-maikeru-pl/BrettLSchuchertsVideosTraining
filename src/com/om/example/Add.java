@@ -2,14 +2,9 @@ package com.om.example;
 
 import java.math.BigDecimal;
 
-public class Add implements MathOperator {
-
+public class Add extends BinaryMathOperator {
 	@Override
-	public void execute(OperandStack values) {
-		BigDecimal rhs = values.peek();
-		values.pop();
-		BigDecimal lhs = values.peek();
-		BigDecimal result = lhs.add(rhs);
-		values.replaceTop(result);
+	public BigDecimal executeImplementation(BigDecimal lhs, BigDecimal rhs) {
+		return lhs.add(rhs);
 	}
 }
