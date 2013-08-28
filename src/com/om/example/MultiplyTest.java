@@ -8,12 +8,12 @@ import org.junit.Test;
 
 public class MultiplyTest {
 	@Test
-	public void canMultiplyTwoNumbers() {
+	public void shouldMultiply() {
 		OperandStack stack = new OperandStack();
-		stack.push(new BigDecimal(3));
-		stack.push(new BigDecimal(7));
+		stack.push(new BigDecimal(12));
+		stack.push(new BigDecimal(2));
 		Multiply op = new Multiply();
 		op.execute(stack);
-		assertEquals(new BigDecimal(21), stack.peek());
+		assertEquals(new BigDecimal(24), stack.peek());
 	}
 }

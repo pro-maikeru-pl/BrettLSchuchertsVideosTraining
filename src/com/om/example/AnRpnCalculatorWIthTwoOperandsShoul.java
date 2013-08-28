@@ -30,10 +30,4 @@ public class AnRpnCalculatorWIthTwoOperandsShoul {
 		calculator.execute("-");
 		assertEquals(new BigDecimal(-1), calculator.getAccumulator());
 	}
-//	@Test
-//	public void multiplyTwoNumbersCorrectly()
-//	{
-//		calculator.execute("*");
-//		assertEquals(new BigDecimal(12), calculator.getAccumulator());
-//	}
 }
