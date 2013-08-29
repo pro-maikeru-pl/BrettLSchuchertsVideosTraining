@@ -4,7 +4,13 @@ import java.math.BigDecimal;
 
 public class RpnCalculator {
 	OperandStack values = new OperandStack();
-	
+	private MathOperatorFactory factory;
+	public RpnCalculator() {
+		this(new ShortNamedMathOperatorFactory());
+	}
+	public RpnCalculator(MathOperatorFactory factory) {
+		this.factory = factory;
+	}
 	public BigDecimal getAccumulator() {
 		return values.peek();
 	}
@@ -27,16 +33,7 @@ public class RpnCalculator {
 	}
 
 	private MathOperator findOperatorNamed(String operatorName) {
-		if ("+".equals(operatorName)) {
-			return new Add();
-		} else if ("-".equals(operatorName)) {
-			return new Subtract();
-		} else if ("*".equals(operatorName)) {
-			return new Multiply();
-		} else if ("!".equals(operatorName)) {
-			return new Factorial();
-		}
-		throw new NoSuchOperator();
+		return factory.findOperatorNamed(operatorName);
 	}
 	
 
